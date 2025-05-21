@@ -1,0 +1,15 @@
+C:\bernardoC\APS0605\APS0605\APS0605\bin\Release\APS0605.exe.config
+C:\bernardoC\APS0605\APS0605\APS0605\bin\Release\APS0605.exe
+C:\bernardoC\APS0605\APS0605\APS0605\bin\Release\APS0605.pdb
+C:\bernardoC\APS0605\APS0605\APS0605\bin\Release\Guna.UI2.dll
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.csproj.AssemblyReference.cache
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.Controller.UserControl1.resources
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.Controller.UserControl2.resources
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.Form1.resources
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.Form2.resources
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.Properties.Resources.resources
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.csproj.GenerateResource.cache
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.csproj.CoreCompileInputs.cache
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.csproj.CopyComplete
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.exe
+C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.pdb
