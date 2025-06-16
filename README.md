@@ -39,16 +39,13 @@ csharp
 Queue<Patient> triageQueue = new Queue<Patient>();
 PriorityQueue<Patient> treatmentQueue = new PriorityQueue<Patient>();
 Stack<Patient> visitHistory = new Stack<Patient>();
-🖼️ Screenshots
-(Add actual screenshots later)
-https://via.placeholder.com/400x200?text=Triage+Input+Form
-https://via.placeholder.com/400x200?text=Priority+Queue+View
+
 
 🚀 Installation
 Clone repository:
 
 bash
-git clone https://github.com/your-username/medical-triage-sim.git
+git clone https://github.com/bernardo-canestraro/Estrutura-de-Dados--Parte-02.git
 Open in Visual Studio 2022+
 
 Restore NuGet packages:
