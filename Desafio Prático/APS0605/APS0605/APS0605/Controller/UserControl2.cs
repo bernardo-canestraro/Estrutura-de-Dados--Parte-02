@@ -5,90 +5,90 @@ namespace APS0605.Controller
 {
     public partial class UserControl2 : UserControl
     {
-        // Dependências injetadas
-        private readonly Triagem _triagem;                  // Sistema de triagem
-        private readonly ClinicoGeral _clinico;             // Gerenciamento clínico
-        private readonly HistoricoAtendimentos _historico;   // Registro de atendimentos
+        // Injected dependencies
+        private readonly Screening _screening;              // Sorting system
+        private readonly GeneralClinic _generalClinic;             // Clinical management
+        private readonly HistoryServices _historyServices;  // Service record
 
-        public UserControl2(Triagem triagem, ClinicoGeral clinico, HistoricoAtendimentos historico)
+        public UserControl2(Screening screening, GeneralClinic generalClinic, HistoryServices historyServices)
         {
             InitializeComponent();
-            // Inicializa as dependências
-            _triagem = triagem;
-            _clinico = clinico;
-            _historico = historico;
+            // Initialize dependencies
+            _screening = screening;
+            _generalClinic = generalClinic;
+            _historyServices = historyServices;
         }
 
-        // Evento de clique no botão de cadastro
+        // Click event on the registration button
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             try
             {
-                // Validação do nome (campo obrigatório)
-                if (string.IsNullOrWhiteSpace(txtNome.Text))
+                // Name validation (required field)
+                if (string.IsNullOrWhiteSpace(txtName.Text))
                 {
                     MessageBox.Show("Nome do paciente é obrigatório!", "Aviso",
                                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Validação da pressão arterial (número positivo)
-                if (!double.TryParse(txtPressaoArterial.Text, out double pressaoArterial) || pressaoArterial <= 0)
+                // Blood pressure validation (positive number)
+                if (!double.TryParse(txtBloodPressure.Text, out double pressaoArterial) || pressaoArterial <= 0)
                 {
                     MessageBox.Show("Pressão arterial inválida!", "Erro",
                                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Validação da temperatura (número positivo)
-                if (!double.TryParse(txtTemperatura.Text, out double temperatura) || temperatura <= 0)
+                // Temperature validation (positive number)
+                if (!double.TryParse(txtTemperature.Text, out double temperatura) || temperatura <= 0)
                 {
                     MessageBox.Show("Temperatura inválida!", "Erro",
                                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Validação da oxigenação (número positivo)
-                if (!double.TryParse(txtNivelOxigenacao.Text, out double nivelOxigenacao) || nivelOxigenacao <= 0)
+                // Oxygenation validation (positive number)
+                if (!double.TryParse(txtOxygenLevel.Text, out double nivelOxigenacao) || nivelOxigenacao <= 0)
                 {
                     MessageBox.Show("Nível de oxigenação inválido!", "Erro",
                                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Cria e registra o novo paciente
-                var novoPaciente = new Paciente(txtNome.Text, pressaoArterial, temperatura, nivelOxigenacao);
-                _triagem.AdicionarPaciente(novoPaciente);  // Adiciona à fila de triagem
-                _clinico.AdicionarPaciente(novoPaciente);  // Registra no sistema clínico
+                // Create and register the new patient
+                var newPatient = new Patient(txtName.Text, pressaoArterial, temperatura, nivelOxigenacao);
+                _screening.AddPatient(newPatient);  // Add to sorting queue
+                _generalClinic.AddPatient(newPatient);  // Register in the clinical system
 
                 MessageBox.Show("Paciente adicionado à fila de triagem.", "Sucesso",
                               MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Limpeza dos campos após cadastro
-                txtNome.Clear();
-                txtPressaoArterial.Clear();
-                txtTemperatura.Clear();
-                txtNivelOxigenacao.Clear();
+                // Cleaning fields after registration
+                txtName.Clear();
+                txtBloodPressure.Clear();
+                txtTemperature.Clear();
+                txtOxygenLevel.Clear();
             }
             catch (Exception ex)
             {
-                // Tratamento genérico de erros
+                // Generic error handling
                 MessageBox.Show($"Erro: {ex.Message}", "Erro",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Validação de entrada para pressão arterial (apenas números)
-        private void txtPressaoArterial_KeyPress(object sender, KeyPressEventArgs e)
+        // Input validation for blood pressure (numbers only)
+        private void txtBloodPressure_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; // Bloqueia caracteres inválidos
+                e.Handled = true; // Block invalid characters
             }
         }
 
-        // Validação de entrada para temperatura (números e ponto decimal)
-        private void txtTemperatura_KeyPress(object sender, KeyPressEventArgs e)
+        // Input validation for temperature (numbers and decimal point)
+        private void txtTemperature_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
@@ -96,8 +96,8 @@ namespace APS0605.Controller
             }
         }
 
-        // Validação de entrada para oxigenação (números e ponto decimal)
-        private void txtNivelOxigenacao_KeyPress(object sender, KeyPressEventArgs e)
+        // Input validation for oxygenation (numbers and decimal point)
+        private void txtOxygenLevel_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {

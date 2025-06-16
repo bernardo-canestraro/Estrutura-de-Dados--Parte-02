@@ -113,6 +113,7 @@
             this.guna2TextBox2.TabIndex = 3;
             this.guna2TextBox2.UseWaitCursor = true;
             this.guna2TextBox2.IconRightClick += new System.EventHandler(this.guna2TextBox2_IconRightClick);
+            this.guna2TextBox2.TextChanged += new System.EventHandler(this.guna2TextBox2_TextChanged);
             // 
             // Form1
             // 

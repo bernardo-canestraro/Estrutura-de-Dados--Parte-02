@@ -6,76 +6,76 @@ namespace APS0605
 {
     public partial class Form2 : Form
     {
-        // Instâncias compartilhadas dos componentes do sistema
-        private readonly Triagem _triagem;                  // Sistema de triagem
-        private readonly ClinicoGeral _clinico;             // Controle clínico
-        private readonly HistoricoAtendimentos _historico;   // Registro de atendimentos
+        // Shared instances of system components
+        private readonly Screening _screening;                  // Sorting system
+        private readonly GeneralClinic _generalClinic;             // Clinical control
+        private readonly HistoryServices _historyServices;  // Service record
 
         public Form2()
         {
             InitializeComponent();
 
-            // Inicializa os componentes principais
-            _triagem = new Triagem();
-            _clinico = new ClinicoGeral(_triagem);  // Injeta a triagem no clínico geral
-            _historico = new HistoricoAtendimentos();
+            // Initialize the main components
+            _screening = new Screening();
+            _generalClinic = new GeneralClinic(_screening);  // Inject triage into the general practitioner
+            _historyServices = new HistoryServices();
 
-            // Carrega a tela inicial (UserControl1)
-            UserControl1 uc = new UserControl1(_triagem, _clinico, _historico);
-            AdicionarUserControl(uc);
+            // Load the home screen (UserControl1)
+            UserControl1 uc = new UserControl1(_screening, _generalClinic, _historyServices);
+            AddUserControl(uc);
         }
 
-        // Método para gerenciar a exibição de UserControls
-        private void AdicionarUserControl(UserControl userControl)
+        // Method to manage the display of UserControls
+        private void AddUserControl(UserControl userControl)
         {
-            // Configura o UserControl para preencher todo o espaço
+            // Set the UserControl to fill the entire space
             userControl.Dock = DockStyle.Fill;
 
-            // Limpa o painel e adiciona o novo controle
+            // Clear the panel and add the new control
             guna2Panel2.Controls.Clear();
             guna2Panel2.Controls.Add(userControl);
             userControl.BringToFront();
 
-            // Atualiza a aparência dos botões de navegação
+            // Updates the appearance of the navigation buttons
             guna2Button1.FillColor = (userControl is UserControl2) ? Color.Gray : Color.Transparent;
             guna2Button2.FillColor = (userControl is UserControl1) ? Color.Gray : Color.Transparent;
         }
 
-        // Evento Load do formulário - Configuração inicial
+        // Form Load Event - Initial Setup
         private void Form2_Load(object sender, System.EventArgs e)
         {
-            guna2Panel1.Width = 71;   // Painel lateral recolhido
-            this.Width = 831;         // Largura inicial do formulário
+            guna2Panel1.Width = 71;   // Side panel collapsed
+            this.Width = 831;         // Initial width of the form
         }
 
-        // Variável de controle para o painel lateral
-        private bool panelExpandido = false;
+        // Control variable for the side panel
+        private bool expandedPanel = false;
 
-        // Evento para expandir/recolher o painel lateral
+        // Event to expand/collapse the side panel
         private void guna2PictureBox1_Click(object sender, System.EventArgs e)
         {
-            // Alterna entre estados expandido/recolhido
-            guna2Panel1.Width = panelExpandido ? 71 : 165;
-            this.Width = panelExpandido ? 831 : 927;
-            panelExpandido = !panelExpandido;
+            // Toggle between expanded/collapsed states
+            guna2Panel1.Width = expandedPanel ? 71 : 165;
+            this.Width = expandedPanel ? 831 : 927;
+            expandedPanel = !expandedPanel;
 
-            // Força redesenho dos componentes
+            // Force redesign of components
             this.Refresh();
             guna2Panel1.Refresh();
         }
 
-        // Botão para exibir o UserControl2 (Tela 2)
+        // Button to display UserControl2 (Screen 2)
         private void guna2Button1_Click(object sender, System.EventArgs e)
         {
-            UserControl2 uc = new UserControl2(_triagem, _clinico, _historico);
-            AdicionarUserControl(uc);
+            UserControl2 uc = new UserControl2(_screening, _generalClinic, _historyServices);
+            AddUserControl(uc);
         }
 
-        // Botão para exibir o UserControl1 (Tela 1 - Inicial)
+        // Button to display UserControl1 (Screen 1 - Home)
         private void guna2Button2_Click(object sender, System.EventArgs e)
         {
-            UserControl1 uc = new UserControl1(_triagem, _clinico, _historico);
-            AdicionarUserControl(uc);
+            UserControl1 uc = new UserControl1(_screening, _generalClinic, _historyServices);
+            AddUserControl(uc);
         }
     }
 }

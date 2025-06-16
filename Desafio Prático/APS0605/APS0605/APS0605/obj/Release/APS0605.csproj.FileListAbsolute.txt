@@ -13,3 +13,13 @@ C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.csproj.CoreCompileInput
 C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.csproj.CopyComplete
 C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.exe
 C:\bernardoC\APS0605\APS0605\APS0605\obj\Release\APS0605.pdb
+C:\bernardoC\Estrutura-de-Dados--Parte-02-main\Estrutura-de-Dados--Parte-02-main\Desafio Prático\APS0605\APS0605\APS0605\obj\Release\APS0605.csproj.AssemblyReference.cache
+C:\bernardoC\Estrutura-de-Dados--Parte-02-main\Estrutura-de-Dados--Parte-02-main\Desafio Prático\APS0605\APS0605\APS0605\obj\Release\APS0605.Controller.UserControl1.resources
+C:\bernardoC\Estrutura-de-Dados--Parte-02-main\Estrutura-de-Dados--Parte-02-main\Desafio Prático\APS0605\APS0605\APS0605\obj\Release\APS0605.Controller.UserControl2.resources
+C:\bernardoC\Estrutura-de-Dados--Parte-02-main\Estrutura-de-Dados--Parte-02-main\Desafio Prático\APS0605\APS0605\APS0605\obj\Release\APS0605.Form1.resources
+C:\bernardoC\Estrutura-de-Dados--Parte-02-main\Estrutura-de-Dados--Parte-02-main\Desafio Prático\APS0605\APS0605\APS0605\obj\Release\APS0605.Form2.resources
+C:\bernardoC\Estrutura-de-Dados--Parte-02-main\Estrutura-de-Dados--Parte-02-main\Desafio Prático\APS0605\APS0605\APS0605\obj\Release\APS0605.Properties.Resources.resources
+C:\bernardoC\Estrutura-de-Dados--Parte-02-main\Estrutura-de-Dados--Parte-02-main\Desafio Prático\APS0605\APS0605\APS0605\obj\Release\APS0605.csproj.GenerateResource.cache
+C:\bernardoC\Estrutura-de-Dados--Parte-02-main\Estrutura-de-Dados--Parte-02-main\Desafio Prático\APS0605\APS0605\APS0605\obj\Release\APS0605.csproj.CoreCompileInputs.cache
+C:\bernardoC\Estrutura-de-Dados--Parte-02-main\Estrutura-de-Dados--Parte-02-main\Desafio Prático\APS0605\APS0605\APS0605\obj\Release\APS0605.exe
+C:\bernardoC\Estrutura-de-Dados--Parte-02-main\Estrutura-de-Dados--Parte-02-main\Desafio Prático\APS0605\APS0605\APS0605\obj\Release\APS0605.pdb

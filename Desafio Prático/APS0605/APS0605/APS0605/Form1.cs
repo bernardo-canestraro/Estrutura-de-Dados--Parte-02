@@ -15,51 +15,56 @@ namespace APS0605
         public Form1()
         {
             InitializeComponent();
-            // Configuração inicial do campo de senha
-            guna2TextBox2.PasswordChar = '•'; // Define o caractere de máscara para senha
-            guna2TextBox2.IconRight = Properties.Resources.view; // Ícone inicial (olho aberto)
+            //Initial password field configuration
+            guna2TextBox2.PasswordChar = '•'; // Sets the mask character for password
+            guna2TextBox2.IconRight = Properties.Resources.view; // Home icon (open eye)
         }
 
-        // Evento de clique no botão de login
+        // Login button click event
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            // Verificação simples de credenciais (usuário: "Login", senha: "Senha")
+            // Simple credential check (user: "Login", password: "Password")
             if (guna2TextBox1.Text == "Login" && guna2TextBox2.Text == "Senha")
             {
-                // Autenticação bem-sucedida:
-                Form2 newForm = new Form2(); // Cria instância do próximo formulário
-                newForm.Show();             // Mostra o novo formulário
-                this.Hide();               // Oculta o formulário de login
+                // Authentication successful:
+                Form2 newForm = new Form2(); // Create an instance of the next form
+                newForm.Show();             // Show the new form
+                this.Hide();               // Hide the login form
             }
             else
             {
-                // Autenticação falhou:
+                // Authentication failed:
                 MessageBox.Show("Login ou senha incorretos!", "Erro de Autenticação",
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Variável de controle para visibilidade da senha
-        private bool senhaVisivel = false;
+        // Control variable for password visibility
+        private bool visiblePassword = false;
 
         // Evento de clique no ícone do campo de senha
         private void guna2TextBox2_IconRightClick(object sender, EventArgs e)
         {
-            // Alterna o estado de visibilidade
-            senhaVisivel = !senhaVisivel;
+            // Toggle the visibility state
+            visiblePassword = !visiblePassword;
 
-            if (senhaVisivel)
+            if (visiblePassword)
             {
-                // Mostra o texto da senha
-                guna2TextBox2.PasswordChar = '\0'; // Remove a máscara
-                guna2TextBox2.IconRight = Properties.Resources.hide; // Ícone de olho fechado
+                // Show the password text
+                guna2TextBox2.PasswordChar = '\0'; // Remove the mask
+                guna2TextBox2.IconRight = Properties.Resources.hide; // Closed eye icon
             }
             else
             {
-                // Oculta o texto da senha
-                guna2TextBox2.PasswordChar = '•'; // Aplica máscara
-                guna2TextBox2.IconRight = Properties.Resources.view; // Ícone de olho aberto
+                // Hide the password text
+                guna2TextBox2.PasswordChar = '•'; //Apply mask
+                guna2TextBox2.IconRight = Properties.Resources.view; // Open eye icon
             }
+        }
+
+        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

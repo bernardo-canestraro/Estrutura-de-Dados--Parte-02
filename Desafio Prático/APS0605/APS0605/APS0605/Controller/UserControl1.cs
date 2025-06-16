@@ -6,37 +6,37 @@ namespace APS0605.Controller
 {
     public partial class UserControl1 : UserControl
     {
-        // Dependências injetadas
-        private readonly Triagem _triagem;                  // Controle de fila de triagem
-        private readonly ClinicoGeral _clinico;            // Gerenciamento clínico
-        private readonly HistoricoAtendimentos _historico;  // Registro de atendimentos
+        // Injected dependencies
+        private readonly Screening _screening;             // Sorting queue control
+        private readonly GeneralClinic _generalClinic;            // Clinical management
+        private readonly HistoryServices _historyServices; // Service record
 
-        public UserControl1(Triagem triagem, ClinicoGeral clinico, HistoricoAtendimentos historico)
+        public UserControl1(Screening screening, GeneralClinic generalClinic, HistoryServices historyServices)
         {
             InitializeComponent();
 
-            // Injeção das dependências
-            _triagem = triagem;
-            _clinico = clinico;
-            _historico = historico;
+            // Dependency injection
+            _screening = screening;
+            _generalClinic = generalClinic;
+            _historyServices = historyServices;
 
-            // Configuração inicial
-            ConfigurarDataGridView();      // Prepara o DataGridView
-            AtualizarListaPacientes();    // Carrega os pacientes iniciais
+            // Initial configuration
+            ConfigureDataGridView();      // Prepare the DataGridView
+            UpdatePatientList();    // Load initial patients
 
-            // Assinatura dos eventos para atualização automática
-            _clinico.PacienteAdicionado += AtualizarListaPacientes;
-            _clinico.PacienteAtendido += AtualizarListaPacientes;
+            // Subscription to events for automatic update
+            _generalClinic.PatientAdded += UpdatePatientList;
+            _generalClinic.PatientAttended += UpdatePatientList;
         }
 
-        // Configuração do DataGridView para exibição de pacientes
-        private void ConfigurarDataGridView()
+        // DataGridView configuration for displaying patients
+        private void ConfigureDataGridView()
         {
-            dgvPacientes.AutoGenerateColumns = false;  // Desativa geração automática de colunas
-            dgvPacientes.AllowUserToAddRows = false;   // Impede adição de linhas pelo usuário
-            dgvPacientes.ReadOnly = true;              // Torna a grid somente leitura
+            dgvPacientes.AutoGenerateColumns = false;  // Disable automatic column generation
+            dgvPacientes.AllowUserToAddRows = false;   // Prevents user from adding lines
+            dgvPacientes.ReadOnly = true;              // Make the grid read-only
 
-            // Adiciona colunas manualmente
+            // Add columns manually
             dgvPacientes.Columns.Add("Nome", "Nome");
             dgvPacientes.Columns.Add("Pressao", "Pressão Arterial");
             dgvPacientes.Columns.Add("Temperatura", "Temperatura");
@@ -44,34 +44,34 @@ namespace APS0605.Controller
             dgvPacientes.Columns.Add("Prioridade", "Prioridade");
         }
 
-        // Atualiza a lista de pacientes no DataGridView
-        public void AtualizarListaPacientes()
+        // Update the list of patients in the DataGridView
+        public void UpdatePatientList()
         {
-            dgvPacientes.Rows.Clear();  // Limpa a grid
+            dgvPacientes.Rows.Clear();  // Clear the grid
 
-            // Adiciona cada paciente na grid
-            foreach (var paciente in _clinico.ObterTodosPacientes())
+            // Add each patient to the grid
+            foreach (var paciente in _generalClinic.GetAllPatients())
             {
                 dgvPacientes.Rows.Add(
-                    paciente.Nome,
-                    paciente.PressaoArterial,
-                    paciente.Temperatura,
-                    paciente.NivelOxigenacao,
-                    paciente.Prioridade
+                    paciente.Name,
+                    paciente.BloodPressure,
+                    paciente.Temperature,
+                    paciente.OxygenationLevel,
+                    paciente.Priority
                 );
             }
         }
 
-        // Evento de clique para atender próximo paciente
+        // Click event to serve next patient
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            var pacienteAtendido = _clinico.Atender();  // Atende o próximo paciente
+            var pacienteAtendido = _generalClinic.Tomeet();  // Attend to the next patient
 
             if (pacienteAtendido != null)
             {
-                // Registra no histórico e mostra mensagem
-                _historico.AdicionarAoHistorico(pacienteAtendido);
-                MessageBox.Show($"Paciente {pacienteAtendido.Nome} atendido com prioridade {pacienteAtendido.Prioridade}.");
+                // Logs to history and displays message
+                _historyServices.AddToHistory(pacienteAtendido);
+                MessageBox.Show($"Paciente {pacienteAtendido.Name} atendido com prioridade {pacienteAtendido.Priority}.");
             }
             else
             {
